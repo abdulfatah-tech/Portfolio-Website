@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Learning Sheet - HTML, CSS & JavaScript</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background: #0f3460;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #e94560;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #e94560;
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #0f3460, #e94560);
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        section {
+            background: #16213e;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e94560;
+        }
+
+        section h2 {
+            color: #e94560;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f3460;
+        }
+
+        section h3 {
+            color: #00d9ff;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: #ffd700;
+            margin: 20px 0 10px 0;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #0d1b2a;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #0f3460;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #00ff88;
+        }
+
+        .code-inline {
+            background: #0d1b2a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #00ff88;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #0f3460;
+        }
+
+        th {
+            background: #e94560;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #1a1a2e;
+        }
+
+        tr:hover {
+            background: #0f3460;
+        }
+
+        /* Demo Boxes */
+        .demo-box {
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 3px solid #e94560;
+        }
+
+        .demo-box h4 {
+            color: #e94560;
+            margin-bottom: 15px;
+        }
+
+        /* Tips */
+        .tip {
+            background: linear-gradient(135deg, #0f3460, #1a1a2e);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffd700;
+        }
+
+        .tip::before {
+            content: "Tipp: ";
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* Warning */
+        .warning {
+            background: linear-gradient(135deg, #4a1a1a, #1a1a2e);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ff4444;
+        }
+
+        .warning::before {
+            content: "Wichtig: ";
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        /* Interactive Examples */
+        .interactive {
+            background: #1a2744;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .interactive h4 {
+            color: #00d9ff;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"], input[type="number"], textarea, select {
+            padding: 10px;
+            border: 2px solid #0f3460;
+            border-radius: 5px;
+            background: #0d1b2a;
+            color: #eee;
+            margin: 5px;
+            font-size: 1em;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+
+        button {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #ff6b8a;
+            transform: translateY(-2px);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Scroll to top */
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e94560;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.5em;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+            transition: all 0.3s;
+        }
+
+        #scrollTop:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#html">HTML</a></li>
+        <li><a href="#css">CSS</a></li>
+        <li><a href="#javascript">JavaScript</a></li>
+        <li><a href="#exercises">Exercises</a></li>
+        <li><a href="#resources">Resources</a></li>
+    </ul>
+</nav>
+
+<main>
+    <header>
+        <h1>Web Development Learning Sheet</h1>
+        <p>HTML, CSS & JavaScript - Basierend auf "Technologien des Internets"</p>
+        <p>Prof. Dr. Thomas Wohner - Ernst-Abbe-Hochschule Jena</p>
+    </header>
+
+    <!-- ==================== HTML SECTION ==================== -->
+    <section id="html">
+        <h2>1. HTML - HyperText Markup Language</h2>
+
+        <h3>1.1 Was ist HTML?</h3>
+        <p>HTML ist eine <strong>Auszeichnungssprache</strong> (Markup Language) zur Strukturierung von Webinhalten. Sie wurde von <strong>Tim Berners-Lee</strong> am CERN entwickelt (1989).</p>
+
+        <div class="tip">
+            HTML definiert die STRUKTUR einer Webseite, nicht das Design. Das Design wird mit CSS gemacht!
+        </div>
+
+        <h3>1.2 Grundstruktur eines HTML-Dokuments</h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Seitentitel&lt;/title&gt;
+    &lt;link href="style.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Hier kommt der sichtbare Inhalt --&gt;
+    &lt;h1&gt;Meine erste Website&lt;/h1&gt;
+    &lt;p&gt;Ein Absatz mit Text.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>1.3 Wichtige HTML-Elemente</h3>
+
+        <h4>Uberschriften (Headings)</h4>
+        <pre><code>&lt;h1&gt;Hauptuberschrift (groesste)&lt;/h1&gt;
+&lt;h2&gt;Unteruberschrift&lt;/h2&gt;
+&lt;h3&gt;Unter-Unteruberschrift&lt;/h3&gt;
+...bis...
+&lt;h6&gt;Kleinste Uberschrift&lt;/h6&gt;</code></pre>
+
+        <h4>Textformatierung</h4>
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Beschreibung</th>
+                <th>Beispiel</th>
+            </tr>
+            <tr>
+                <td><code>&lt;p&gt;</code></td>
+                <td>Absatz (Paragraph)</td>
+                <td>&lt;p&gt;Text&lt;/p&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;br&gt;</code></td>
+                <td>Zeilenumbruch</td>
+                <td>Zeile 1&lt;br&gt;Zeile 2</td>
+            </tr>
+            <tr>
+                <td><code>&lt;strong&gt;</code></td>
+                <td>Fett (wichtig)</td>
+                <td>&lt;strong&gt;Wichtig&lt;/strong&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;em&gt;</code></td>
+                <td>Kursiv (betont)</td>
+                <td>&lt;em&gt;Betont&lt;/em&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;sup&gt;</code></td>
+                <td>Hochgestellt</td>
+                <td>x&lt;sup&gt;2&lt;/sup&gt; = x<sup>2</sup></td>
+            </tr>
+            <tr>
+                <td><code>&lt;sub&gt;</code></td>
+                <td>Tiefgestellt</td>
+                <td>H&lt;sub&gt;2&lt;/sub&gt;O = H<sub>2</sub>O</td>
+            </tr>
+        </table>
+
+        <h4>Listen</h4>
+        <pre><code>&lt;!-- Ungeordnete Liste (Punkte) --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Erstes Element&lt;/li&gt;
+    &lt;li&gt;Zweites Element&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Geordnete Liste (Nummern) --&gt;
+&lt;ol&gt;
+    &lt;li&gt;Schritt 1&lt;/li&gt;
+    &lt;li&gt;Schritt 2&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+        <h4>Links</h4>
+        <pre><code>&lt;!-- Externer Link --&gt;
+&lt;a href="https://www.google.com"&gt;Zu Google&lt;/a&gt;
+
+&lt;!-- Link in neuem Tab --&gt;
+&lt;a href="https://www.google.com" target="_blank"&gt;Neuer Tab&lt;/a&gt;
+
+&lt;!-- E-Mail Link --&gt;
+&lt;a href="mailto:email@example.com"&gt;E-Mail senden&lt;/a&gt;
+
+&lt;!-- Interner Link (andere Seite) --&gt;
+&lt;a href="seite2.html"&gt;Zur Seite 2&lt;/a&gt;</code></pre>
+
+        <h4>Bilder</h4>
+        <pre><code>&lt;img src="bild.jpg" alt="Beschreibung des Bildes"&gt;
+
+&lt;!-- Mit Groessenangabe --&gt;
+&lt;img src="bild.jpg" alt="Beschreibung" width="300" height="200"&gt;</code></pre>
+
+        <div class="warning">
+            Das <code>alt</code>-Attribut ist wichtig fur Barrierefreiheit und SEO!
+        </div>
+
+        <h4>Tabellen</h4>
+        <pre><code>&lt;table&gt;
+    &lt;caption&gt;Tabellentitel&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Spalte 1&lt;/th&gt;
+        &lt;th&gt;Spalte 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Daten 1&lt;/td&gt;
+        &lt;td&gt;Daten 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td colspan="2"&gt;Uber 2 Spalten&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan="2"&gt;Uber 2 Zeilen&lt;/td&gt;
+        &lt;td&gt;Normal&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h4>Formulare</h4>
+        <pre><code>&lt;form name="meinFormular"&gt;
+    &lt;!-- Textfeld --&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+
+    &lt;!-- Passwort --&gt;
+    &lt;label for="pw"&gt;Passwort:&lt;/label&gt;
+    &lt;input type="password" id="pw" name="passwort"&gt;
+
+    &lt;!-- Zahl --&gt;
+    &lt;input type="number" name="zahl" min="0" max="100"&gt;
+
+    &lt;!-- Radio Buttons (nur einer waehlbar) --&gt;
+    &lt;input type="radio" name="status" value="ja"&gt; Ja
+    &lt;input type="radio" name="status" value="nein"&gt; Nein
+
+    &lt;!-- Checkbox (mehrere waehlbar) --&gt;
+    &lt;input type="checkbox" name="option1"&gt; Option 1
+    &lt;input type="checkbox" name="option2"&gt; Option 2
+
+    &lt;!-- Dropdown --&gt;
+    &lt;select name="auswahl"&gt;
+        &lt;option value="a"&gt;Option A&lt;/option&gt;
+        &lt;option value="b"&gt;Option B&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Textarea --&gt;
+    &lt;textarea name="nachricht" rows="4" cols="50"&gt;&lt;/textarea&gt;
+
+    &lt;!-- Buttons --&gt;
+    &lt;button type="submit"&gt;Absenden&lt;/button&gt;
+    &lt;button type="reset"&gt;Zuruecksetzen&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h4>Semantische Elemente (HTML5)</h4>
+        <pre><code>&lt;header&gt;Kopfbereich&lt;/header&gt;
+&lt;nav&gt;Navigation&lt;/nav&gt;
+&lt;main&gt;Hauptinhalt&lt;/main&gt;
+&lt;section&gt;Abschnitt&lt;/section&gt;
+&lt;article&gt;Artikel&lt;/article&gt;
+&lt;aside&gt;Seitenleiste&lt;/aside&gt;
+&lt;footer&gt;Fusszeile&lt;/footer&gt;</code></pre>
+
+        <div class="demo-box">
+            <h4>Live Demo - Formular</h4>
+            <form>
+                <label>Name: <input type="text" placeholder="Dein Name"></label><br><br>
+                <label>Student:
+                    <input type="radio" name="student" value="ja"> Ja
+                    <input type="radio" name="student" value="nein"> Nein
+                </label><br><br>
+                <label>Nachricht:<br>
+                    <textarea rows="3" cols="30" placeholder="Deine Nachricht..."></textarea>
+                </label><br><br>
+                <button type="button" onclick="alert('Formular gesendet!')">Absenden</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== CSS SECTION ==================== -->
+    <section id="css">
+        <h2>2. CSS - Cascading Style Sheets</h2>
+
+        <h3>2.1 Was ist CSS?</h3>
+        <p>CSS definiert das <strong>visuelle Design</strong> von HTML-Elementen. "Cascading" bedeutet, dass Styles auf untergeordnete Elemente vererbt werden.</p>
+
+        <div class="tip">
+            Trennung von Struktur (HTML) und Design (CSS) macht den Code ubersichtlicher und wartbarer!
+        </div>
+
+        <h3>2.2 CSS einbinden - 3 Methoden</h3>
+
+        <h4>1. Inline-Style (direkt im Element)</h4>
+        <pre><code>&lt;h1 style="color: red; font-size: 24px;"&gt;Roter Text&lt;/h1&gt;</code></pre>
+
+        <h4>2. Internal Stylesheet (im &lt;head&gt;)</h4>
+        <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        h1 {
+            color: blue;
+            font-size: 24px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+        <h4>3. External Stylesheet (separate Datei - EMPFOHLEN!)</h4>
+        <pre><code>&lt;!-- In der HTML-Datei: --&gt;
+&lt;head&gt;
+    &lt;link href="style.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+
+/* In style.css: */
+h1 {
+    color: green;
+    font-size: 24px;
+}</code></pre>
+
+        <h3>2.3 CSS Selektoren</h3>
+        <table>
+            <tr>
+                <th>Selektor</th>
+                <th>Syntax</th>
+                <th>Beispiel</th>
+                <th>Prioritaet</th>
+            </tr>
+            <tr>
+                <td>Universal</td>
+                <td>*</td>
+                <td>* { margin: 0; }</td>
+                <td>Niedrigste</td>
+            </tr>
+            <tr>
+                <td>Element/Tag</td>
+                <td>element</td>
+                <td>p { color: red; }</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Klasse</td>
+                <td>.klassenname</td>
+                <td>.highlight { background: yellow; }</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>#idname</td>
+                <td>#header { height: 100px; }</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Attribut</td>
+                <td>[attr="wert"]</td>
+                <td>input[type="text"] { ... }</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pseudoklasse</td>
+                <td>:zustand</td>
+                <td>a:hover { color: red; }</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Inline-Style</td>
+                <td>style="..."</td>
+                <td>style="color: red;"</td>
+                <td>Hochste</td>
+            </tr>
+        </table>
+
+        <h4>Selektoren kombinieren</h4>
+        <pre><code>/* Alle p in einem div */
+div p { color: blue; }
+
+/* Element mit Klasse */
+p.wichtig { font-weight: bold; }
+
+/* Mehrere Selektoren */
+h1, h2, h3 { color: navy; }
+
+/* Direktes Kind */
+div > p { margin: 10px; }
+
+/* Nachbar-Element */
+h1 + p { font-size: 1.2em; }</code></pre>
+
+        <h3>2.4 Das Box-Modell</h3>
+        <pre><code>/*
++----------------------------------+
+|           MARGIN                 |
+|  +----------------------------+  |
+|  |        BORDER              |  |
+|  |  +----------------------+  |  |
+|  |  |      PADDING         |  |  |
+|  |  |  +----------------+  |  |  |
+|  |  |  |    CONTENT     |  |  |  |
+|  |  |  +----------------+  |  |  |
+|  |  +----------------------+  |  |
+|  +----------------------------+  |
++----------------------------------+
+*/
+
+.box {
+    width: 200px;           /* Breite des Inhalts */
+    height: 100px;          /* Hoehe des Inhalts */
+    padding: 20px;          /* Innenabstand */
+    border: 2px solid black;/* Rahmen */
+    margin: 10px;           /* Aussenabstand */
+
+    /* WICHTIG: border-box schliesst padding+border in width ein */
+    box-sizing: border-box;
+}</code></pre>
+
+        <div class="demo-box">
+            <h4>Box-Modell Visualisierung</h4>
+            <div style="background: #e94560; padding: 20px; margin: 20px; border: 5px solid #0f3460; width: 250px;">
+                <div style="background: #00d9ff; padding: 15px;">
+                    Content (Inhalt)
+                </div>
+                <small>Padding (rosa), Border (dunkelblau), Margin (aussen)</small>
+            </div>
+        </div>
+
+        <h3>2.5 Wichtige CSS-Eigenschaften</h3>
+
+        <h4>Farben</h4>
+        <pre><code>/* Verschiedene Farbformate */
+color: red;                    /* Name */
+color: #ff0000;               /* Hex */
+color: rgb(255, 0, 0);        /* RGB */
+color: rgba(255, 0, 0, 0.5);  /* RGB mit Transparenz */
+
+background-color: lightblue;
+background: linear-gradient(to right, red, blue);</code></pre>
+
+        <h4>Text & Schrift</h4>
+        <pre><code>font-family: Arial, sans-serif;
+font-size: 16px;           /* oder: 1em, 1rem, 120% */
+font-weight: bold;         /* oder: 100-900 */
+font-style: italic;
+text-align: center;        /* left, right, justify */
+text-decoration: underline;/* none, line-through */
+line-height: 1.5;</code></pre>
+
+        <h4>Display & Positionierung</h4>
+        <pre><code>display: block;        /* Nimmt volle Breite */
+display: inline;       /* Nur so breit wie Inhalt */
+display: inline-block; /* Inline mit Block-Eigenschaften */
+display: none;         /* Versteckt */
+display: flex;         /* Flexbox Layout */
+
+position: static;      /* Normal (Standard) */
+position: relative;    /* Relativ zu Normal-Position */
+position: absolute;    /* Relativ zu positioniertem Parent */
+position: fixed;       /* Relativ zum Viewport */
+position: sticky;      /* Hybrid aus relative+fixed */</code></pre>
+
+        <h4>Flexbox (wichtig!)</h4>
+        <pre><code>.container {
+    display: flex;
+    flex-direction: row;       /* oder: column */
+    justify-content: center;   /* Hauptachse */
+    align-items: center;       /* Querachse */
+    gap: 10px;                 /* Abstand zwischen Items */
+    flex-wrap: wrap;           /* Umbruch erlauben */
+}
+
+.item {
+    flex: 1;                   /* Gleichmaessig verteilen */
+}</code></pre>
+
+        <h3>2.6 Responsive Design mit Media Queries</h3>
+        <pre><code>/* Styles fur kleine Bildschirme (max 600px) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    nav {
+        display: none;  /* Navigation verstecken */
+    }
+}
+
+/* Styles fur grosse Bildschirme */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+}</code></pre>
+
+        <h3>2.7 Pseudoklassen</h3>
+        <pre><code>/* Maus uber Element */
+a:hover {
+    color: red;
+}
+
+/* Element angeklickt */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Input fokussiert */
+input:focus {
+    border-color: blue;
+    outline: none;
+}
+
+/* Erstes/Letztes Kind */
+li:first-child { font-weight: bold; }
+li:last-child { border: none; }
+
+/* Jedes zweite Element */
+tr:nth-child(even) { background: #f0f0f0; }</code></pre>
+
+        <div class="interactive">
+            <h4>Interaktiv: Hover-Effekt testen</h4>
+            <style>
+                .hover-demo {
+                    display: inline-block;
+                    padding: 20px 40px;
+                    background: #e94560;
+                    color: white;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                .hover-demo:hover {
+                    background: #00d9ff;
+                    transform: scale(1.1) rotate(5deg);
+                    box-shadow: 0 10px 30px rgba(0,217,255,0.4);
+                }
+            </style>
+            <div class="hover-demo">Hover uber mich!</div>
+        </div>
+    </section>
+
+    <!-- ==================== JAVASCRIPT SECTION ==================== -->
+    <section id="javascript">
+        <h2>3. JavaScript - Clientseitige Programmierung</h2>
+
+        <h3>3.1 Was ist JavaScript?</h3>
+        <p>JavaScript macht Webseiten <strong>interaktiv</strong>. Es lauft im Browser (clientseitig) und kann HTML/CSS dynamisch verandern.</p>
+
+        <h3>3.2 JavaScript einbinden</h3>
+        <pre><code>&lt;!-- Inline (im HTML) --&gt;
+&lt;button onclick="alert('Hallo!')"&gt;Klick mich&lt;/button&gt;
+
+&lt;!-- Internal Script (im HTML) --&gt;
+&lt;script&gt;
+    function sagHallo() {
+        alert('Hallo!');
+    }
+&lt;/script&gt;
+
+&lt;!-- External Script (EMPFOHLEN) --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+        <h3>3.3 Variablen & Datentypen</h3>
+        <pre><code>// Variablen deklarieren
+let name = "Max";           // String (Text)
+let alter = 25;             // Number (Zahl)
+let istStudent = true;      // Boolean (true/false)
+let liste = [1, 2, 3];      // Array (Liste)
+let person = {              // Object
+    name: "Max",
+    alter: 25
+};
+
+// const = Konstante (nicht anderbar)
+const PI = 3.14159;
+
+// var = alte Schreibweise (nicht empfohlen)
+var altesFormat = "vermeiden";</code></pre>
+
+        <h3>3.4 Operatoren</h3>
+        <pre><code>// Arithmetisch
+let summe = 5 + 3;      // 8
+let differenz = 5 - 3;  // 2
+let produkt = 5 * 3;    // 15
+let quotient = 6 / 2;   // 3
+let rest = 7 % 3;       // 1 (Modulo)
+
+// Vergleich
+5 == "5"    // true  (Wert-Vergleich)
+5 === "5"   // false (Typ+Wert-Vergleich) - EMPFOHLEN!
+5 !== 3     // true  (ungleich)
+5 > 3       // true
+5 >= 5      // true
+
+// Logisch
+true && false  // false (UND)
+true || false  // true  (ODER)
+!true          // false (NICHT)</code></pre>
+
+        <h3>3.5 Kontrollstrukturen</h3>
+        <pre><code>// If-Else
+if (alter >= 18) {
+    console.log("Erwachsen");
+} else if (alter >= 13) {
+    console.log("Teenager");
+} else {
+    console.log("Kind");
+}
+
+// Switch
+switch (note) {
+    case 1:
+        console.log("Sehr gut");
+        break;
+    case 2:
+        console.log("Gut");
+        break;
+    default:
+        console.log("Andere Note");
+}
+
+// For-Schleife
+for (let i = 0; i < 5; i++) {
+    console.log(i);  // 0, 1, 2, 3, 4
+}
+
+// For-of (durch Array)
+let farben = ["rot", "gruen", "blau"];
+for (let farbe of farben) {
+    console.log(farbe);
+}
+
+// While-Schleife
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}</code></pre>
+
+        <h3>3.6 Funktionen</h3>
+        <pre><code>// Funktion definieren
+function begruessen(name) {
+    return "Hallo, " + name + "!";
+}
+
+// Funktion aufrufen
+let nachricht = begruessen("Max");  // "Hallo, Max!"
+
+// Arrow Function (moderne Schreibweise)
+const addieren = (a, b) => a + b;
+let ergebnis = addieren(3, 4);  // 7
+
+// Funktion mit mehreren Zeilen
+const berechne = (a, b) => {
+    let summe = a + b;
+    let produkt = a * b;
+    return { summe, produkt };
+};</code></pre>
+
+        <h3>3.7 DOM-Manipulation (wichtig!)</h3>
+        <pre><code>// Element finden
+let element = document.getElementById("meinId");
+let elemente = document.getElementsByClassName("meineKlasse");
+let element2 = document.querySelector(".klasse");  // CSS-Selektor
+let liste = document.querySelectorAll("p");
+
+// Inhalt andern
+element.innerHTML = "&lt;strong&gt;Neuer HTML-Inhalt&lt;/strong&gt;";
+element.textContent = "Nur Text";
+
+// Wert von Input-Feldern
+let inputWert = document.getElementById("eingabe").value;
+
+// CSS andern
+element.style.color = "red";
+element.style.backgroundColor = "blue";
+element.style.display = "none";
+
+// Klassen andern
+element.classList.add("neueKlasse");
+element.classList.remove("alteKlasse");
+element.classList.toggle("aktiv");
+
+// Attribute andern
+element.setAttribute("src", "neuesBild.jpg");
+let wert = element.getAttribute("href");</code></pre>
+
+        <h3>3.8 Events (Ereignisse)</h3>
+        <pre><code>// Methode 1: Im HTML
+&lt;button onclick="meineFunktion()"&gt;Klick&lt;/button&gt;
+
+// Methode 2: addEventListener (EMPFOHLEN)
+let button = document.getElementById("meinButton");
+button.addEventListener("click", function() {
+    alert("Geklickt!");
+});
+
+// Wichtige Events:
+// click       - Mausklick
+// dblclick    - Doppelklick
+// mouseover   - Maus uber Element
+// mouseout    - Maus verlasst Element
+// keydown     - Taste gedruckt
+// keyup       - Taste losgelassen
+// change      - Wert geandert (Input, Select)
+// submit      - Formular abgeschickt
+// load        - Seite geladen
+
+// Event-Objekt nutzen
+document.addEventListener("keydown", function(event) {
+    console.log("Taste: " + event.key);
+    console.log("Keycode: " + event.keyCode);
+});</code></pre>
+
+        <h3>3.9 Web Storage</h3>
+        <pre><code>// localStorage - Daten bleiben auch nach Browser-Schluss
+localStorage.setItem("name", "Max");
+let name = localStorage.getItem("name");
+localStorage.removeItem("name");
+localStorage.clear();  // Alles loeschen
+
+// sessionStorage - Daten nur fur diese Sitzung
+sessionStorage.setItem("warenkorb", "Auto");
+let ware = sessionStorage.getItem("warenkorb");
+
+// Objekte speichern (als JSON)
+let person = { name: "Max", alter: 25 };
+localStorage.setItem("person", JSON.stringify(person));
+let geladen = JSON.parse(localStorage.getItem("person"));</code></pre>
+
+        <h3>3.10 Praktische Beispiele</h3>
+
+        <div class="interactive">
+            <h4>Beispiel 1: Button-Click mit Alert</h4>
+            <button onclick="alert('Hallo! Das ist ein Alert.')">Klick fur Alert</button>
+            <pre><code>&lt;button onclick="alert('Hallo!')"&gt;Klick&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="interactive">
+            <h4>Beispiel 2: Einfacher Rechner</h4>
+            <label>Zahl 1: <input type="number" id="zahl1" value="0"></label>
+            <label>Zahl 2: <input type="number" id="zahl2" value="0"></label>
+            <select id="operation">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <button onclick="rechne()">Rechnen</button>
+            <p>Ergebnis: <span id="ergebnis">-</span></p>
+            <script>
+                function rechne() {
+                    let z1 = parseFloat(document.getElementById("zahl1").value);
+                    let z2 = parseFloat(document.getElementById("zahl2").value);
+                    let op = document.getElementById("operation").value;
+                    let result;
+
+                    switch(op) {
+                        case "+": result = z1 + z2; break;
+                        case "-": result = z1 - z2; break;
+                        case "*": result = z1 * z2; break;
+                        case "/": result = z1 / z2; break;
+                    }
+
+                    document.getElementById("ergebnis").textContent = result;
+                }
+            </script>
+        </div>
+
+        <div class="interactive">
+            <h4>Beispiel 3: Text zu Grossbuchstaben (Doppelklick)</h4>
+            <input type="text" id="textInput" value="doppelklick mich"
+                   ondblclick="this.value = this.value.toUpperCase()">
+            <pre><code>ondblclick="this.value = this.value.toUpperCase()"</code></pre>
+        </div>
+
+        <div class="interactive">
+            <h4>Beispiel 4: Farbe andern mit Color Picker</h4>
+            <div id="farbBox" style="width: 150px; height: 150px; background: #ff0000; border-radius: 10px; margin: 10px 0;"></div>
+            <input type="color" id="farbPicker" value="#ff0000" onchange="document.getElementById('farbBox').style.background = this.value">
+            <pre><code>onchange="element.style.background = this.value"</code></pre>
+        </div>
+
+        <div class="interactive">
+            <h4>Beispiel 5: Taste erkennen</h4>
+            <p>Drucke eine Taste!</p>
+            <p style="font-size: 2em; color: #e94560;" id="tastenAnzeige">-</p>
+            <script>
+                document.addEventListener("keydown", function(e) {
+                    document.getElementById("tastenAnzeige").textContent = e.key;
+                });
+            </script>
+        </div>
+    </section>
+
+    <!-- ==================== EXERCISES SECTION ==================== -->
+    <section id="exercises">
+        <h2>4. Ubungsaufgaben</h2>
+
+        <h3>HTML Ubungen</h3>
+
+        <h4>Aufgabe 1: Satz des Pythagoras</h4>
+        <p>Erstelle eine Seite mit dem Titel "HTML Basisubung" und zeige die Formel: a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup></p>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;HTML Basisubung&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Satz des Pythagoras&lt;/h1&gt;
+    &lt;p&gt;a&lt;sup&gt;2&lt;/sup&gt; = b&lt;sup&gt;2&lt;/sup&gt; + c&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </details>
+
+        <h4>Aufgabe 2: Tabelle mit Zellenverbindung</h4>
+        <p>Erstelle eine Tabelle mit colspan und rowspan.</p>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;table border="1"&gt;
+    &lt;caption&gt;Tabelle 1&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Spalte 1&lt;/th&gt;
+        &lt;th&gt;Spalte 2&lt;/th&gt;
+        &lt;th&gt;Spalte 3&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td rowspan="2"&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;4&lt;/td&gt;
+        &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;6&lt;/td&gt;
+        &lt;td colspan="2"&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        </details>
+
+        <h4>Aufgabe 3: Formular</h4>
+        <p>Erstelle ein Formular mit Name, Passwort, Student-Status (Radio) und Nachricht (Textarea).</p>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;form&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Angaben zur Person&lt;/legend&gt;
+
+        &lt;label&gt;Name:
+            &lt;input type="text" name="name"&gt;
+        &lt;/label&gt;&lt;br&gt;
+
+        &lt;label&gt;Passwort:
+            &lt;input type="password" name="passwort"&gt;
+        &lt;/label&gt;&lt;br&gt;
+
+        &lt;label&gt;Student:
+            &lt;input type="radio" name="student" value="ja"&gt; ja
+            &lt;input type="radio" name="student" value="nein"&gt; nein
+        &lt;/label&gt;&lt;br&gt;
+
+        &lt;label&gt;Nachricht:
+            &lt;textarea name="nachricht"&gt;Ihre Nachricht bitte!&lt;/textarea&gt;
+        &lt;/label&gt;&lt;br&gt;
+
+        &lt;button type="reset"&gt;Loschen&lt;/button&gt;
+        &lt;button type="submit"&gt;Senden&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+        </details>
+
+        <h3>CSS Ubungen</h3>
+
+        <h4>Aufgabe 4: Zentrierte Box</h4>
+        <p>Erstelle eine zentrierte Box mit Hintergrundfarbe und Text.</p>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;style&gt;
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .box {
+        background-color: aquamarine;
+        padding: 20px;
+        color: red;
+    }
+
+    .box p {
+        font-weight: bold;
+    }
+&lt;/style&gt;
+
+&lt;div class="box"&gt;
+    &lt;p&gt;Treffen sich zwei Lichtschalter!&lt;/p&gt;
+    &lt;p&gt;Fragt der eine: "Darf ich dich drucken?"&lt;/p&gt;
+    &lt;p&gt;Darauf der andere: "Davon gehe ich aus!"&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </details>
+
+        <h4>Aufgabe 5: Layout mit Header, Nav, Content, Footer</h4>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;style&gt;
+    * { box-sizing: border-box; margin: 0; }
+
+    header {
+        background: olive;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    nav {
+        background: orange;
+        width: 25%;
+        padding: 10px;
+    }
+
+    main {
+        background: rosybrown;
+        width: 75%;
+        padding: 10px;
+        min-height: 200px;
+    }
+
+    footer {
+        background: green;
+        text-align: center;
+        padding: 10px;
+    }
+&lt;/style&gt;
+
+&lt;header&gt;Header&lt;/header&gt;
+&lt;div class="container"&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Link1&lt;/a&gt;&lt;br&gt;
+        &lt;a href="#"&gt;Link2&lt;/a&gt;&lt;br&gt;
+        &lt;a href="#"&gt;Link3&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;main&gt;Content&lt;/main&gt;
+&lt;/div&gt;
+&lt;footer&gt;Footer&lt;/footer&gt;</code></pre>
+        </details>
+
+        <h3>JavaScript Ubungen</h3>
+
+        <h4>Aufgabe 6: Alert bei Button-Klick</h4>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;button onclick="alert('Alles Gute fur 2024!')"&gt;
+    Click mich!
+&lt;/button&gt;
+
+// Oder mit Funktion:
+&lt;script&gt;
+function zeigNachricht() {
+    alert('Alles Gute fur 2024!');
+    console.log('Alles Gute fur 2024!');
+}
+&lt;/script&gt;
+&lt;button onclick="zeigNachricht()"&gt;Click mich!&lt;/button&gt;</code></pre>
+        </details>
+
+        <h4>Aufgabe 7: Rechner mit +/-</h4>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;label&gt;Zahl 1: &lt;input type="number" id="z1"&gt;&lt;/label&gt;
+&lt;label&gt;Zahl 2: &lt;input type="number" id="z2"&gt;&lt;/label&gt;
+&lt;select id="op"&gt;
+    &lt;option value="+"&gt;+&lt;/option&gt;
+    &lt;option value="-"&gt;-&lt;/option&gt;
+&lt;/select&gt;
+&lt;button onclick="rechnen()"&gt;Rechnen!&lt;/button&gt;
+&lt;p&gt;Ergebnis: &lt;input type="text" id="ergebnis" readonly&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function rechnen() {
+    let z1 = parseFloat(document.getElementById('z1').value);
+    let z2 = parseFloat(document.getElementById('z2').value);
+    let op = document.getElementById('op').value;
+    let result;
+
+    if (op === '+') {
+        result = z1 + z2;
+    } else {
+        result = z1 - z2;
+    }
+
+    document.getElementById('ergebnis').value = result;
+}
+&lt;/script&gt;</code></pre>
+        </details>
+
+        <h4>Aufgabe 8: SessionStorage Warenkorb</h4>
+        <details>
+            <summary>Losung anzeigen</summary>
+            <pre><code>&lt;!-- Seite 1: kaufen.html --&gt;
+&lt;label&gt;Ware: &lt;input type="text" id="ware"&gt;&lt;/label&gt;
+&lt;button onclick="kaufen()"&gt;Kaufen!&lt;/button&gt;
+
+&lt;script&gt;
+function kaufen() {
+    let ware = document.getElementById('ware').value;
+    sessionStorage.setItem('warenkorb', ware);
+    window.location.href = 'warenkorb.html';
+}
+&lt;/script&gt;
+
+&lt;!-- Seite 2: warenkorb.html --&gt;
+&lt;p id="anzeige"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+let ware = sessionStorage.getItem('warenkorb');
+document.getElementById('anzeige').textContent =
+    'Im Warenkorb liegt: ' + ware;
+&lt;/script&gt;</code></pre>
+        </details>
+    </section>
+
+    <!-- ==================== RESOURCES SECTION ==================== -->
+    <section id="resources">
+        <h2>5. Hilfreiche Ressourcen</h2>
+
+        <h3>Offizielle Dokumentation</h3>
+        <ul>
+            <li><a href="https://www.w3schools.com/" target="_blank" style="color: #00d9ff;">W3Schools</a> - Tutorials & Referenzen</li>
+            <li><a href="https://developer.mozilla.org/de/" target="_blank" style="color: #00d9ff;">MDN Web Docs</a> - Mozilla Developer Network</li>
+            <li><a href="https://wiki.selfhtml.org/" target="_blank" style="color: #00d9ff;">SelfHTML</a> - Deutsche Referenz</li>
+        </ul>
+
+        <h3>Tools</h3>
+        <ul>
+            <li><a href="https://code.visualstudio.com/" target="_blank" style="color: #00d9ff;">Visual Studio Code</a> - Empfohlener Editor</li>
+            <li><a href="https://validator.w3.org/" target="_blank" style="color: #00d9ff;">W3C Validator</a> - HTML prufen</li>
+            <li><a href="https://www.csszengarden.com/" target="_blank" style="color: #00d9ff;">CSS Zen Garden</a> - CSS Inspiration</li>
+        </ul>
+
+        <h3>CSS Frameworks</h3>
+        <ul>
+            <li><a href="https://getbootstrap.com/" target="_blank" style="color: #00d9ff;">Bootstrap 5</a> - Beliebtes CSS Framework</li>
+        </ul>
+
+        <h3>Tipps zum Lernen</h3>
+        <div class="tip">
+            Ubung macht den Meister! Probiere alle Beispiele selbst aus und verandere sie.
+        </div>
+        <div class="tip">
+            Nutze die Browser-Entwicklertools (F12) um Code zu analysieren und zu debuggen.
+        </div>
+        <div class="tip">
+            Starte mit kleinen Projekten und erweitere sie schrittweise.
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; color: #888; margin-top: 40px; border-top: 1px solid #0f3460;">
+        <p>Learning Sheet basierend auf den Vorlesungsunterlagen</p>
+        <p>"Technologien des Internets" - Prof. Dr. Thomas Wohner</p>
+        <p>Ernst-Abbe-Hochschule Jena</p>
+    </footer>
+</main>
+
+<div id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</div>
+
+<script>
+    // Scroll to top button
+    window.addEventListener('scroll', function() {
+        let btn = document.getElementById('scrollTop');
+        if (window.scrollY > 300) {
+            btn.style.display = 'flex';
+        } else {
+            btn.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
